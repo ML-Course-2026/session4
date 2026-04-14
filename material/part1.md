@@ -236,7 +236,7 @@ To overcome the mathematical limitations of the single-layer perceptron regardin
 3.  **Output Layer:** The final layer that produces the network's continuous or discrete prediction (e.g., a probability score for classification or a continuous value for regression).
 
 **Advanced Activation Functions:**
-To effectively learn complex patterns, hidden layers replace the step function with continuous, differentiable **activation functions**. 
+To effectively learn complex patterns, hidden layers replace the step function with continuous, differentiable [**activation functions**](https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions#common_activation_functions). 
 
 *   **Sigmoid:** Maps input values into a bounded range between 0 and 1. Formula: $f(x) = \frac{1}{1 + e^{-x}}$
 
@@ -428,7 +428,7 @@ For further academic study and practical experimentation with neural network arc
 ---
 
 <details>
-<summary>Python Code for AND OR and XOR Data Visualization</summary>
+<summary><b>Python Code for AND OR and XOR Data Visualization</b></summary>
 
 Here's the Python code to generate the scatter plots for the AND data points:
 

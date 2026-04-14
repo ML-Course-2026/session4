@@ -3,7 +3,7 @@
 ## Introduction
 
 This laboratory exercise operationalizes the theoretical concepts discussed in the lecture. The objective is to programmatically define a single Perceptron to evaluate its computational capacity and limitations regarding linear separability. Subsequently, the exercise utilizes the Keras framework to construct a Multi-Layer Perceptron (MLP) capable of processing non-linear datasets.
-\
+
 **Learning Objectives:**
 1.  Implement a mathematical Perceptron function in Python.
 2.  Manipulate weights and biases to model fundamental logic gates (AND, OR, NOT).
@@ -77,8 +77,8 @@ By modifying the statistical weights and bias, the Perceptron can model linearly
 gate_inputs = [[0, 0], [0, 1],[1, 0], [1, 1]]
 
 # --- YOUR TASK: Define weights and bias for OR --- #
-weights_or = [?, ?]
-bias_or = ?
+weights_or = [None, None]
+bias_or = None
 # --- END YOUR TASK --- #
 
 print("--- OR Gate Output ---")
@@ -101,9 +101,14 @@ bias_or = -0.5
 **(b) AND Gate:** Outputs 1 strictly when both inputs are 1.
 ```python
 # --- YOUR TASK: Define weights and bias for AND --- #
-weights_and = [?, ?]
-bias_and = ?
+weights_and = [None, None]
+bias_and = None
 # --- END YOUR TASK --- #
+
+print("--- AND Gate Output ---")
+for input_pair in gate_inputs:
+    output = perceptron(input_pair, weights_and, bias_and)
+    print(f"Input: {input_pair}, Output: {output}")
 ```
 
 <details>
@@ -123,13 +128,13 @@ bias_and = -1.5
 not_inputs = [[0], [1]] 
 
 # --- YOUR TASK: Define weight and bias for NOT --- #
-weights_not =[?]
-bias_not = ?
+weights_not =[None]
+bias_not = None
 # --- END YOUR TASK --- #
 
 print("\n--- NOT Gate ---")
 for input_val in not_inputs:
-     # Make sure weights_not matches the input structure (single element)
+    # Make sure weights_not matches the input structure (single element)
     output = perceptron(input_val, weights_not, bias_not)
     print(f"Input: {input_val}, Output: {output}")
 ```
@@ -273,6 +278,41 @@ model.summary()
 *   `activation='sigmoid'`: Used in the final layer. It squashes the final network output into a probability score between 0 and 1, ideal for binary classification.
 </details>
 
+<details>
+<summary><b>About input_shape in Keras 3</b></summary>
+
+<br>
+In **TensorFlow 2.16+ / Keras 3**, you should not pass `input_shape` into `Dense`. Instead, add an explicit `Input` layer first.
+
+**Old (deprecated)**
+
+```python
+model = keras.Sequential()
+model.add(layers.Dense(units=4, activation='relu', input_shape=(2,)))
+```
+
+**New (recommended with `model.add()`)**
+
+```python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential()
+
+# Define input separately
+model.add(keras.Input(shape=(2,)))
+
+# Then add layers
+model.add(layers.Dense(units=4, activation='relu'))
+```
+
+### Key idea
+
+* `keras.Input(shape=(2,))` defines the input layer explicitly
+* `Dense` layers now only define computation (not input shape)
+
+</details>
+
 **Question:** Review the output of `model.summary()`. How are the parameter (weight and bias) counts calculated for both the hidden and output layers?
 
 <details>
@@ -336,6 +376,13 @@ print(f"Final Training Accuracy: {history.history['accuracy'][-1] * 100}%")
 > If your model did not reach 100% accuracy, it likely became trapped in a "local minimum" due to unfortunate random initial weights. Re-run the model building and training cells to reset the weights and try again.
 
 ### 2.5 Evaluating the Model
+
+```python
+predictions = (model.predict(X) > 0.5).astype(int)
+for i in range(len(X)):
+    print(f"Input: {X[i]}, Predicted: {int(predictions[i])}, Expected: {int(y[i])}")
+```
+
 
 > [!WARNING]  
 > **Why MLPs are theoretically suboptimal for XOR:** While an MLP *can* solve XOR, applying a continuous, gradient-based optimization algorithm (Adam/Gradient Descent) to a strictly discrete, Boolean problem is structurally inefficient. Because weights are initialized randomly, the network can easily converge into a "local minimum" (a mathematical valley) where it predicts 0.5 for all inputs, failing to learn the rule. Decision Trees or analytical Boolean logic are vastly superior for pure logic gate abstraction.
@@ -432,6 +479,6 @@ plt.show()
 > [!TIP]  
 > **Observe the Output:** Look at the generated plot. The network has successfully drawn a nearly circular polygon around the center points. A single Perceptron could only draw a straight line through this space. The MLP, combining multiple neurons with ReLU activations, successfully segments non-linear data!
 
-## Laboratory Conclusion
+## Conclusion
 
 Through this exercise, you have empirically verified the mathematical limitations of single-layer perceptrons utilizing visualization. By transitioning to a multi-layer framework utilizing Keras, you successfully optimized neural architectures capable of abstracting complex, spatial boundaries that are completely non-linearly separable.
