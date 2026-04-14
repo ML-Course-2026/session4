@@ -7,7 +7,7 @@
 ### Reading Assignment
 
 Read the paper titled "Discrimination in Online Ad Delivery" by Latanya Sweeney. 
-The paper is available [here](./pape.pdf) or at https://arxiv.org/abs/1301.6822 
+The paper is available [here](./paper.pdf) or at https://arxiv.org/abs/1301.6822 
 
 > For more: Fast.ai book
 > https://github.com/fastai/fastbook/blob/master/03_ethics.ipynb
