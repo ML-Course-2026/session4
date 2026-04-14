@@ -1,7 +1,7 @@
 # Homework: 
 
-> [!WARNING]  
-> The focus of this session’s homework is AI ethics; it includes material that was not completed by all groups during the previous session.
+> [!NOTE]  
+> This session’s homework focuses again on AI ethics, since some groups did not complete the AI‑ethics homework last time.
 
 
 ### Reading Assignment

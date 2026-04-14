@@ -1,5 +1,10 @@
 # Session 4:
 
+> [!IMPORTANT]  
+> [Homework](./material/homework.md): This session’s homework focuses again on AI ethics, since some groups did not complete the AI‑ethics homework last time.
+
+
+-----
 ### Topics
 
 - Group presentations
@@ -17,11 +22,6 @@
 
 ---
 
-> [!IMPORTANT]  
-> [Homework](./material/homework.md)
-
-
------
 
 #### Part 0: Review
 
