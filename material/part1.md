@@ -129,6 +129,7 @@ The perceptron evaluates the inequality: $1.0(x_1) + 1.0(x_2) - 0.5 \ge 0$.
 <ul>
 <li>If input is [0, 0]: $0 + 0 - 0.5 = -0.5$ (Less than 0 $\rightarrow$ Output 0)</li>
 <li>If input is [1, 0]: $1.0 + 0 - 0.5 = 0.5$ (Greater than 0 $\rightarrow$ Output 1)</li>
+<li>If input is [0, 1]: $0 + 1.0 - 0.5 = 0.5$ (Greater than 0 $\rightarrow$ Output 1)</li>
 <li>If input is [1, 1]: $1.0 + 1.0 - 0.5 = 1.5$ (Greater than 0 $\rightarrow$ Output 1)</li>
 </ul>
 </details>
@@ -216,9 +217,14 @@ In architectural terms, this means combining multiple perceptrons together. You 
 
 To overcome the mathematical limitations of the single-layer perceptron regarding non-linearly separable data, artificial neurons must be connected in multiple, stacked layers. This architectural expansion forms a **Multi-Layer Perceptron (MLP)**, also known generally as a Feedforward Neural Network.
 
+<img src="./img/mlp.png" width="50%" alt="MLP">
+
+*(Figure 5a: The basic structure of MLP, including input layer, hidden layer, and output layer.)*
+
+
 <img src="./img/a-neuron.jpg" width="50%" alt="Diagram showing a modern artificial neuron suitable for MLP layers">
 
-*(Figure 5: Diagram of a modern artificial neuron utilized in hidden layers, featuring continuous non-linear activation functions.)*
+*(Figure 5b: Diagram of a modern artificial neuron utilized in hidden layers, featuring non-linear activation functions.)*
 
 > [!IMPORTANT]  
 > **A Historical Misnomer:** Despite the name "Multi-Layer Perceptron," the nodes within the hidden and output layers of modern MLPs are not standard perceptrons. They do not use the Heaviside step function; instead, they utilize continuous, non-linear activation functions to allow for complex mathematical optimization.
@@ -232,12 +238,11 @@ To overcome the mathematical limitations of the single-layer perceptron regardin
 **Advanced Activation Functions:**
 To effectively learn complex patterns, hidden layers replace the step function with continuous, differentiable **activation functions**. 
 
-*   **Sigmoid:** Maps input values into a bounded range between 0 and 1. 
-    Formula: $f(x) = \frac{1}{1 + e^{-x}}$
-    
+*   **Sigmoid:** Maps input values into a bounded range between 0 and 1. Formula: $f(x) = \frac{1}{1 + e^{-x}}$
+
     <img src="./img/sigmoid.png" width="50%" alt="Plot of the Sigmoid function">
 
-*   **Tanh (Hyperbolic Tangent):** Maps input values into a bounded range between -1 and 1, centered at zero.
+*   **Tanh (Hyperbolic Tangent):** Maps input values into a bounded range between -1 and 1, centered at zero. Formula: $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$
 
     <img src="./img/tanh.png" width="50%" alt="Plot of the Tanh function">
 
@@ -297,9 +302,8 @@ Formulaically: $\frac{\partial \text{Loss}}{\partial w_1} = \frac{\partial \text
 
 The following examples utilize Python to visualize how gradient descent iteratively locates the minimum of a mathematical loss function.
 
-<details>
-<summary><b>Code Example & Visualization: 2D Gradient Descent</b></summary>
-<br>
+**Code Example & Visualization: 2D Gradient Descent**
+
 This script demonstrates optimizing a single parameter ($x$) to minimize a quadratic loss function ($L = x^2$).
 
 ```python
@@ -341,7 +345,6 @@ plt.show()
 <img src="./img/2d-example.png" width="50%" alt="2D plot showing steps taken by gradient descent towards a minimum">
 
 *(Figure 6: A 2D visualization of gradient descent algorithm descending a quadratic loss curve.)*
-</details>
 
 <details>  
 <summary><b>Code Example & Visualization: 3D Gradient Descent</b></summary>
