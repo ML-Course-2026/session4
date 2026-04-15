@@ -58,11 +58,12 @@
 
 - Draw.io
 - [Visualization Tool](https://playground.tensorflow.org)  
-- [Prompt Engineering Techniques – Prompting Guide](https://www.promptingguide.ai/techniques)  
 - [Kaggle: Intro to Deep Learning](https://www.kaggle.com/learn/intro-to-deep-learning)  
 - [Google ML Crash Course – Nodes and Hidden Layers](https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers)  
 - [Google ML Crash Course – Activation Functions](https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions)  
-<!-- - [Slides](./material/lec_4_part1.ipynb) -->
+<!--
+- [Prompt Engineering Techniques – Prompting Guide](https://www.promptingguide.ai/techniques)  
+- [Slides](./material/lec_4_part1.ipynb) -->
 
 
 </details>
