@@ -43,9 +43,9 @@ Now, write and execute the Python code to install the necessary library and set 
 2.  **Import Libraries:** Run the following code in a *new* cell to import all the modules needed for this lab.
     ```python
     # Core Gemini and Colab libraries
-    import google.generai as genai
-    from google.generai import types
     from google.colab import userdata
+    from google import genai
+    from google.genai import types # types is used for specific configurations later
 
     # Gradio for UI
     import gradio as gr
